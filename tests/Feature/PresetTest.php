@@ -53,3 +53,14 @@ it('may use the Symfony preset', function () {
         ->and($output)
         ->toContain('── Symfony');
 });
+
+it('may use the WordPress preset', function () {
+    [$statusCode, $output] = run('default', [
+        'path' => base_path('tests/Fixtures/without-issues'),
+        '--preset' => 'wordpress',
+    ]);
+
+    expect($statusCode)->toBe(0)
+        ->and($output)
+        ->toContain('── WordPress');
+});
